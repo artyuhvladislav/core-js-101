@@ -5,7 +5,6 @@
  *                                                                                           *
  ******************************************************************************************* */
 
-
 /**
  * Returns the result of concatenation of two strings.
  *
@@ -21,7 +20,6 @@
 function concatenateStrings(s1, s2) {
   return `${s1}${s2}`;
 }
-
 
 /**
  * Returns the length of given string.
@@ -70,7 +68,6 @@ function extractNameFromTemplate(s) {
   return s.replace('Hello, ', '').slice(0, s.length - 1);
 }
 
-
 /**
  * Returns a first char of the given string.
  *
@@ -84,7 +81,6 @@ function extractNameFromTemplate(s) {
 function getFirstChar(s) {
   return s[0];
 }
-
 /**
  * Removes a leading and trailing whitespace characters from string.
  *
@@ -143,9 +139,8 @@ function removeFirstOccurrences(str, v) {
  *   '<a>' => 'a'
  */
 function unbracketTag(s) {
- return s.slice(1, s.length - 1)
+  return s.slice(1, s.length - 1)
 }
-
 
 /**
  * Converts all characters of the specified string into the upper case
@@ -159,6 +154,7 @@ function unbracketTag(s) {
  */
 function convertToUpperCase(s) {
   return s.toUpperCase()
+}
 
 /**
  * Extracts e-mails from single string with e-mails list delimeted by semicolons
@@ -178,7 +174,6 @@ function convertToUpperCase(s) {
 function extractEmails(s) {
   return s.split(';')
 }
-
 /**
  * Returns the string representation of rectangle with specified width and height
  * using pseudograhic chars
@@ -206,7 +201,6 @@ function getRectangleString(width, height) {
   return `┌${'─'.repeat(width - 2)}┐\n${(`│${' '.repeat(width - 2)}│\n`).repeat(height - 2)}└${'─'.repeat(width - 2)}┘\n`
 }
 
-
 /**
  * Encode specified string with ROT13 cipher
  * See details:  https://en.wikipedia.org/wiki/ROT13
@@ -223,13 +217,14 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
+function encodeToRot13(str) {
   const inp = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; const out = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
   return str.split('').reduce((a, b) => {
     a.push(inp.includes(b) ? out[inp.indexOf(b)] : b);
     return a;
   }, []).join('');
 }
+
 
 /**
  * Returns true if the value is string; otherwise false.
@@ -247,7 +242,6 @@ function encodeToRot13(/* str */) {
 function isString(s) {
   return typeof s === 'string'
 }
-
 
 /**
  * Returns playid card id.
@@ -274,19 +268,11 @@ function isString(s) {
  *   'K♠' => 51
  */
 function getCardId(v) {
-  const arr = [
-    'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
-   'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
-   'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
-   'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'
-  ]
-  arr.forEach( (el, i) => {
-    if(el === v) {
-      return i
-    }
-  })
+  return ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+  'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+  'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+  'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'].indexOf(v);
 }
-
 
 module.exports = {
   concatenateStrings,
